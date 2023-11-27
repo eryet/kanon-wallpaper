@@ -1,0 +1,544 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background: url("images/background/bg_HalloHappyWorld.jpg");
+  overflow: hidden;
+}
+
+.stripe-banner {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  /* background: #000; */
+}
+
+.container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 2em;
+  width: 1800px;
+  height: 900px;
+  transition: all 400ms;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  /* z-index: 1000; */
+  opacity: 0;
+}
+
+.overlay-left {
+  left: 0;
+}
+.overlay-second {
+  left: 20%;
+}
+.overlay-middle {
+  left: 40%;
+}
+.overlay-fourth {
+  left: 60%;
+}
+.overlay-right {
+  left: 80%;
+}
+
+/* .overlay-left:hover ~ .container .box-1,
+.overlay-second:hover ~ .container .box-2,
+.overlay-middle:hover ~ .container .box-3,
+.overlay-fourth:hover ~ .container .box-4,
+.overlay-right:hover ~ .container .box-5 {
+  filter: grayscale(0%) opacity(100%);
+} */
+
+.box-1:hover ~ .container .box-1::after,
+.box-1:hover ~ .container .box-2::after,
+.box-1:hover ~ .container .box-3::after,
+.box-1:hover ~ .container .box-4::after,
+.box-1:hover ~ .container .box-5::after {
+  opacity: 1;
+}
+
+/* .overlay-left:hover ~ .container {
+  grid-template-columns: 5fr 1fr 1fr 1fr 1fr;
+}
+
+.overlay-second:hover ~ .container {
+  grid-template-columns: 1fr 5fr 1fr 1fr 1fr;
+}
+.overlay-middle:hover ~ .container {
+  grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
+}
+.overlay-fourth:hover ~ .container {
+  grid-template-columns: 1fr 1fr 1fr 5fr 1fr;
+}
+.overlay-right:hover ~ .container {
+  grid-template-columns: 1fr 1fr 1fr 1fr 5fr;
+} */
+
+.box {
+  position: relative;
+  background: var(--img) center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid #2a3cad; */
+  overflow: hidden;
+}
+
+.box-1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* https://stackoverflow.com/questions/41940968/is-there-a-way-to-slow-down-a-gif-as-a-background-in-html-and-css */
+  /* i have better tools to do this but have not time to write guide lol */
+  background-image: url("./images/overlay/bubble-slower.gif"),
+    url("./images/overlay/grain.gif"),
+    conic-gradient(
+      hsl(176, 100%, 76%),
+      hsl(228, 100%, 74%),
+      hsl(283, 100%, 73%),
+      hsl(2, 100%, 73%),
+      hsl(176, 100%, 76%)
+    ),
+    radial-gradient(hsla(150, 00%, 0%, 0.98) 10%, hsla(0, 0%, 95%, 0.15) 90%);
+  /* background-image: url("./images/overlay/sparkles.gif"),
+    url("./images/overlay/holo.png"),
+    repeating-linear-gradient(
+      82deg,
+      hsl(53, 65%, 60%),
+      hsl(93, 56%, 50%),
+      hsl(176, 54%, 49%),
+      hsl(228, 59%, 55%),
+      hsl(283, 60%, 55%),
+      hsl(326, 59%, 51%),
+      hsl(326, 59%, 51%),
+      hsl(283, 60%, 55%),
+      hsl(228, 59%, 55%),
+      hsl(176, 54%, 49%),
+      hsl(93, 56%, 50%),
+      hsl(53, 65%, 60%)
+    ); */
+  background-blend-mode: overlay;
+  filter: brightness(0.8) contrast(1.1) saturate(0.5);
+  mix-blend-mode: color-dodge;
+  background-size: contain;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.33s ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+}
+
+.box-2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("./images/overlay/spin.gif"),
+    url("./images/overlay/cosmos-bottom.png"),
+    linear-gradient(
+      -30deg,
+      hsl(0, 57%, 37%),
+      hsl(40, 53%, 39%),
+      hsl(90, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(210, 57%, 39%),
+      hsl(280, 55%, 31%),
+      hsl(0, 57%, 37%),
+      hsl(40, 53%, 39%),
+      hsl(90, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(210, 57%, 39%),
+      hsl(280, 55%, 31%),
+      hsl(0, 57%, 37%),
+      hsl(40, 53%, 39%),
+      hsl(90, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(210, 57%, 39%),
+      hsl(280, 55%, 31%),
+      hsl(0, 57%, 37%)
+    ),
+    radial-gradient(hsla(150, 00%, 0%, 0.98) 40%, hsla(0, 0%, 95%, 0.15) 60%);
+  background-blend-mode: soft-light, overlay;
+  mix-blend-mode: color-dodge;
+  background-size: cover;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.33s ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+}
+
+.box-3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("./images/overlay/sparkles.gif");
+  background-blend-mode: overlay;
+  mix-blend-mode: color-dodge;
+  background-size: cover;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.33s ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+}
+
+.box-4::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("./images/overlay/flow.gif"),
+    url("./images/overlay/galaxy-source.png"),
+    linear-gradient(
+      -30deg,
+      hsl(7.2, 99.1%, 54.1%),
+      hsl(40, 53%, 39%),
+      hsl(90, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(210, 57%, 39%),
+      hsl(280, 55%, 31%),
+      hsl(7.2, 99.1%, 54.1%),
+      hsl(40, 53%, 39%),
+      hsl(90, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(210, 57%, 39%),
+      hsl(280, 55%, 31%),
+      hsl(7.2, 99.1%, 54.1%),
+      hsl(40, 53%, 39%),
+      hsl(90, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(180, 60%, 35%),
+      hsl(210, 57%, 39%),
+      hsl(280, 55%, 31%),
+      hsl(7.2, 99.1%, 54.1%)
+    );
+  background-blend-mode: overlay;
+  mix-blend-mode: color-dodge;
+  background-size: cover;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.33s ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+}
+
+.box-5::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("./images/overlay/sparkles.gif"),
+    url("./images/overlay/holo.png"),
+    conic-gradient(
+      hsl(176, 100%, 76%),
+      hsl(228, 100%, 74%),
+      hsl(283, 100%, 73%),
+      hsl(2, 100%, 73%),
+      hsl(176, 100%, 76%)
+    ),
+    radial-gradient(hsla(150, 00%, 0%, 0.98) 10%, hsla(0, 0%, 95%, 0.15) 90%);
+  background-blend-mode: overlay;
+  mix-blend-mode: color-dodge;
+  background-size: cover;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.33s ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+}
+
+.container .box-1:hover,
+.container .box-2:hover,
+.container .box-3:hover,
+.container .box-4:hover,
+.container .box-5:hover {
+  filter: grayscale(0%) opacity(100%);
+}
+
+.container .box-1:hover::after,
+.container .box-2:hover::after,
+.container .box-3:hover::after,
+.container .box-4:hover::after,
+.container .box-5:hover::after {
+  opacity: 1;
+}
+
+.container .box-1:hover span::after,
+.container .box-2:hover span::after,
+.container .box-3:hover span::after,
+.container .box-4:hover span::after,
+.container .box-5:hover span::after {
+  opacity: 1;
+}
+
+/* wallpaper chrome version has no support for :has and grid transition so i had to resort with gsap */
+/* .container:has(.box-1:hover) {
+  grid-template-columns: 5fr 1fr 1fr 1fr 1fr;
+}
+
+.container:has(.box-2:hover) {
+  grid-template-columns: 1fr 5fr 1fr 1fr 1fr;
+}
+
+.container:has(.box-3:hover) {
+  grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
+}
+
+.container:has(.box-4:hover) {
+  grid-template-columns: 1fr 1fr 1fr 5fr 1fr;
+}
+
+.container:has(.box-5:hover) {
+  grid-template-columns: 1fr 1fr 1fr 1fr 5fr;
+} */
+
+.box-1 {
+  background-position: 40% 0%;
+  background-size: cover;
+}
+
+/* .box-3 {
+  background-position: 49% 0%;
+  background-size: cover;
+} */
+
+.box-4 {
+  background-position: 30% 0%;
+  background-size: cover;
+}
+
+.box-5 {
+  background-position: 35% 0%;
+  background-size: cover;
+}
+
+.box:nth-child(odd) {
+  transform: translateY(-16px);
+}
+
+.box:nth-child(even) {
+  transform: translateY(16px);
+}
+
+.content {
+  z-index: 100;
+  --img-width: 200px;
+  --img-height: 165px;
+  --img-offset-x: 0px;
+  --img-offset-y: 0px;
+  --img-border-radius: 7px;
+}
+
+.content__img {
+  pointer-events: none;
+  width: var(--img-width);
+  height: var(--img-height);
+  border-radius: var(--img-border-radius);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  will-change: transform, filter;
+}
+
+.content__img-inner {
+  background-position: 50% 50%;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.box-1 span::after,
+.box-2 span::after,
+.box-3 span::after,
+.box-4 span::after,
+.box-5 span::after {
+  opacity: 0;
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Common styles for all spans */
+.box span:nth-child(1),
+.box span:nth-child(3) {
+  width: 100%;
+  height: 10px;
+}
+
+.box span:nth-child(2),
+.box span:nth-child(4) {
+  height: 100%;
+  width: 10px;
+}
+
+/* Positioning for each span */
+.box span:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+.box span:nth-child(2) {
+  top: 0;
+  left: 0;
+}
+.box span:nth-child(3) {
+  bottom: 0;
+  left: 0;
+}
+.box span:nth-child(4) {
+  top: 0;
+  right: 0;
+}
+
+.box span::after {
+  content: "";
+  position: absolute;
+  background: #ffa100;
+  z-index: 10000;
+  /* background-image: url("https://bestdori.com/assets/tw/deco/pins_rip/deco_pins014001.png"); */
+  /* border-image: url("https://bestdori.com/assets/tw/deco/pins_rip/deco_pins014001.png")
+    30 round; */
+}
+
+/* ::after for Top */
+.box span:nth-child(1)::after {
+  width: 100%;
+  height: 5px;
+  left: 0;
+  top: 0;
+  transform: scaleX(0);
+  animation: animate-horizontal-left-right 3s linear infinite;
+}
+
+/* ::after for Bottom */
+.box span:nth-child(3)::after {
+  width: 100%;
+  height: 5px;
+  left: 0;
+  bottom: 0;
+  transform: scaleX(0);
+  animation: animate-horizontal-right-left 3s linear infinite;
+}
+
+/* ::after for Left */
+.box span:nth-child(2)::after {
+  width: 5px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: animate-vertical-bottom-top 3s linear infinite;
+}
+
+/* ::after for Right */
+.box span:nth-child(4)::after {
+  width: 5px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: animate-vertical-top-bottom 3s linear infinite;
+}
+
+/* Keyframes */
+@keyframes animate-horizontal-left-right {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  50.1% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+@keyframes animate-horizontal-right-left {
+  0% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  50.1% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  100% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+}
+
+@keyframes animate-vertical-bottom-top {
+  0% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  50.1% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+}
+
+@keyframes animate-vertical-top-bottom {
+  0%,
+  100% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  50.1% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}

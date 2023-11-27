@@ -1,0 +1,181 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  z-index: 1000;
+  opacity: 0;
+}
+
+.overlay-left {
+  left: 0;
+}
+.overlay-second {
+  left: 20%;
+}
+.overlay-middle {
+  left: 40%;
+}
+.overlay-fourth {
+  left: 60%;
+}
+.overlay-right {
+  left: 80%;
+}
+
+.stripe-banner {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background: #000;
+}
+
+.container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 2em;
+  width: 1800px;
+  height: 900px;
+  transition: all 400ms;
+}
+
+.box {
+  position: relative;
+  background: var(--img) center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #2a3cad;
+  overflow: hidden;
+}
+
+.box::before {
+  border: 2px solid #2a3cad;
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("./images/overlay/sparkles.gif");
+  /* linear-gradient(
+        125deg,
+        #ff008450 15%,
+        #fca40040 30%,
+        #ffff0030 40%,
+        #00ff8a20 60%,
+        #00cfff40 70%,
+        #cc4cfa50 85%
+      ); */
+  background-size: cover;
+  background-blend-mode: overlay;
+  mix-blend-mode: color-dodge;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.33s ease;
+}
+
+.overlay-left:hover ~ .container .box-1,
+.overlay-second:hover ~ .container .box-2,
+.overlay-middle:hover ~ .container .box-3,
+.overlay-fourth:hover ~ .container .box-4,
+.overlay-right:hover ~ .container .box-5 {
+  filter: grayscale(0%) opacity(100%);
+}
+
+.overlay-left:hover ~ .container .box-1::after,
+.overlay-second:hover ~ .container .box-2::after,
+.overlay-middle:hover ~ .container .box-3::after,
+.overlay-fourth:hover ~ .container .box-4::after,
+.overlay-right:hover ~ .container .box-5::after {
+  opacity: 1;
+}
+
+.overlay-left:hover ~ .container {
+  grid-template-columns: 5fr 1fr 1fr 1fr 1fr;
+}
+
+.overlay-second:hover ~ .container {
+  grid-template-columns: 1fr 5fr 1fr 1fr 1fr;
+}
+.overlay-middle:hover ~ .container {
+  grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
+}
+.overlay-fourth:hover ~ .container {
+  grid-template-columns: 1fr 1fr 1fr 5fr 1fr;
+}
+.overlay-right:hover ~ .container {
+  grid-template-columns: 1fr 1fr 1fr 1fr 5fr;
+}
+
+.box-1 {
+  background-position: 40% 0%;
+  background-size: cover;
+}
+
+/* .box-3 {
+  background-position: 49% 0%;
+  background-size: cover;
+} */
+
+.box-4 {
+  background-position: 30% 0%;
+  background-size: cover;
+}
+
+.box-5 {
+  background-position: 35% 0%;
+  background-size: cover;
+}
+
+.box:nth-child(odd) {
+  transform: translateY(-16px);
+}
+
+.box:nth-child(even) {
+  transform: translateY(16px);
+}
+
+.content {
+  z-index: 100;
+  --img-width: 200px;
+  --img-height: 165px;
+  --img-offset-x: 0px;
+  --img-offset-y: 0px;
+  --img-border-radius: 7px;
+}
+
+.content__img {
+  width: var(--img-width);
+  height: var(--img-height);
+  border-radius: var(--img-border-radius);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  will-change: transform, filter;
+}
+
+.content__img-inner {
+  background-position: 50% 50%;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
