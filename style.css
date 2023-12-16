@@ -45,7 +45,6 @@ html {
   gap: 2em;
   width: 1800px;
   height: 900px;
-  transition: all 400ms;
 }
 
 .box {
