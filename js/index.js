@@ -33,30 +33,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const container = document.querySelector(".container");
-//   const overlays = document.querySelectorAll(".overlay");
+// script.js
+document.getElementById("goFullscreen").addEventListener("click", function () {
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (document.documentElement.mozRequestFullScreen) {
+    // Firefox
+    document.documentElement.mozRequestFullScreen();
+  } else if (document.documentElement.webkitRequestFullscreen) {
+    // Chrome, Safari, Opera
+    document.documentElement.webkitRequestFullscreen();
+  } else if (document.documentElement.msRequestFullscreen) {
+    // IE/Edge
+    document.documentElement.msRequestFullscreen();
+  }
 
-//   overlays.forEach((overlay, index) => {
-//     overlay.addEventListener("mouseover", () => {
-//       const columns = Array(5).fill("1fr");
-//       columns[index] = "5fr";
-//       gsap.to(container, {
-//         duration: 0.2,
-//         gridTemplateColumns: columns.join(" "),
-//         ease: "native",
-//       });
-//     });
+  // Hide the backdrop and show main content
+  document.getElementById("backdrop").style.display = "none";
+  document.getElementById("mainContent").style.display = "block";
+});
 
-//     overlay.addEventListener("mouseout", () => {
-//       gsap.to(container, {
-//         duration: 0.2,
-//         gridTemplateColumns: columns.join(" "),
-//         ease: "native",
-//       });
-//     });
-//   });
-// });
+// Optionally, listen for the fullscreen change event in case the user exits fullscreen
+document.addEventListener("fullscreenchange", function () {
+  if (!document.fullscreenElement) {
+    document.getElementById("backdrop").style.display = "flex";
+    document.getElementById("mainContent").style.display = "none";
+  }
+});
 
 // Preload all images
 preloadImages(".content__img-inner").then(() => {

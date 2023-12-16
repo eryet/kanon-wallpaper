@@ -461,6 +461,40 @@ html {
   animation: animate-vertical-top-bottom 3s linear infinite;
 }
 
+#backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+}
+
+#goFullscreen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 250px;
+  height: 60px;
+  margin-left: -100px;
+  margin-top: -25px;
+  background: transparent;
+  outline: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ffde6a;
+  border: 2px solid #ffde6a;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+#goFullscreen:hover {
+  background-color: #ffde6a;
+  color: #fff;
+  letter-spacing: 1px;
+  font-size: 22px;
+}
+
 /* Keyframes */
 @keyframes animate-horizontal-left-right {
   0% {
